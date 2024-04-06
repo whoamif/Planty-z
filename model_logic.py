@@ -67,12 +67,9 @@ def suggest_disease(user_symptoms):
         messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
         return
     
-    diseases_count = {}
-    for disease in likely_diseases:
-        disease_name = disease[x]
-        diseases_count[disease_name] = diseases_count.get(disease_name, 0) + 1
     
-    suggested_disease = max(diseases_count, key=diseases_count.get)
+    
+    suggested_disease = likely_diseases[0].bindings[0][expr('x')]
     messagebox.showinfo("Result", f"Suggested disease based on symptoms:\n{suggested_disease}")
 
 # Interface using tkinter
