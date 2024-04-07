@@ -9,9 +9,23 @@ kb = FolKB()
 diseases = ["Rust", "LeafSpotDiseases", "GrayMold", "RootRot", "VerticilliumWilt",
             "FusariumWilt", "DownyMildew", "PowderyMildew", "Anthracnose", "LateBlight"]
 
+<<<<<<< Updated upstream
 # Add the disease facts to the knowledge base
 for disease in diseases:
     kb.tell(expr(f"Disease({disease})")) 
+=======
+    # Define diseases
+    KB.tell(expr('Disease(Rust)'))
+    KB.tell(expr('Disease(LeafSpotDiseases)'))
+    KB.tell(expr('Disease(GrayMold)'))
+    KB.tell(expr('Disease(RootRot)'))
+    KB.tell(expr('Disease(VerticilliumWilt)'))
+    KB.tell(expr('Disease(FusariumWilt)'))
+    KB.tell(expr('Disease(DownyMildew)'))
+    KB.tell(expr('Disease(PowderyMildew)'))
+    KB.tell(expr('Disease(Anthracnose)'))
+    KB.tell(expr('Disease(LateBlight)'))       
+>>>>>>> Stashed changes
 
 # Define user attributes in the knowledge base
 kb.tell(expr('Person(Me)'))
@@ -110,7 +124,12 @@ def get_symptoms():
     submit_button = tk.Button(symptoms_window, text="Submit", command=on_submit)
     submit_button.pack(pady=20)
 
+<<<<<<< Updated upstream
 # Main application window
+=======
+
+# GUI Setup
+>>>>>>> Stashed changes
 root = tk.Tk()
 root.title("Plant Disease Diagnosis")
 
