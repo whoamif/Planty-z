@@ -11,7 +11,7 @@ diseases = ["Rust", "LeafSpotDiseases", "GrayMold", "RootRot", "VerticilliumWilt
 
 # Add the disease facts to the knowledge base
 for disease in diseases:
-    kb.tell(expr(f"Disease({disease})"))
+    kb.tell(expr(f"Disease({disease})")) 
 
 # Define user attributes in the knowledge base
 kb.tell(expr('Person(Me)'))
@@ -24,9 +24,22 @@ symptoms = ["YellowOrangeBrownPustules", "Defoliation", "CircularIrregularlySpot
             "CurlyLeaves", "OnlyOneSideIsAffected", "AllThePlantIsAffected",
             "BrownStricksOnViscularTissue", "PinkishSporeMasses"]
 
+<<<<<<< Updated upstream
 # Add the symptom facts to the knowledge base
 for symptom in symptoms:
     kb.tell(expr(f"Symptom(Me, {symptom})"))  # Modified here
+=======
+    for clause in KB.clauses:
+        if '==>' in str(clause):
+            lhs, rhs = str(clause).split('==>')
+            lhs_symptoms = lhs.split('&')
+            
+            for lhs_symptom in lhs_symptoms:
+                symptom_name = lhs_symptom.split('(')[1].split(')')[0]
+                if symptom_name in user_symptoms:
+                    matched_diseases.add(rhs.split('(')[1].split(')')[0])
+                    break 
+>>>>>>> Stashed changes
 
 # Define rules based on symptoms and diseases
 kb.tell(expr('Symptom(Me, x) & Symptom(Me, y) & Disease(z) ==> RecommendDisease(z, Me)'))
@@ -57,6 +70,7 @@ kb.tell(expr('Symptom(BrownStricksOnViscularTissue) & Symptom(FusariumWilt) ==> 
 kb.tell(expr('Symptom(BrownStricksOnViscularTissue) & Symptom(LateBlight) ==> Disease(LateBlight)'))
 kb.tell(expr('Symptom(PinkishSporeMasses) ==> Disease(DownyMildew)'))
 
+<<<<<<< Updated upstream
 def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
         kb.tell(expr(f'Symptom(Me, {symptom})'))
@@ -71,6 +85,12 @@ def suggest_disease(user_symptoms):
     
     suggested_disease = likely_diseases[0].bindings[0][expr('x')]
     messagebox.showinfo("Result", f"Suggested disease based on symptoms:\n{suggested_disease}")
+=======
+def check_symptoms(): 
+    user_input = entry.get()
+    user_symptoms = [symptom.strip() for symptom in user_input.split(',')]
+    matched_diseases = get_matched_diseases(user_symptoms)
+>>>>>>> Stashed changes
 
 # Interface using tkinter
 def get_symptoms():
