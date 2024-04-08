@@ -30,29 +30,7 @@ for symptom in symptoms:
 
 # Define rules based on symptoms and diseases
 kb.tell(expr('Symptom(Me, YellowOrangeBrownPustules) & Symptom(Me, Defoliation) ==> RecommendDisease(Rust, Me)'))
-kb.tell(expr('Symptom(Me, Defoliation) & Symptom(Me, CircularIrregularlySpots) ==> RecommendDisease(LeafSpotDiseases, Me)'))
-kb.tell(expr('Symptom(Me, GrayBrownFuzz) ==> RecommendDisease(GrayMold, Me)'))
-kb.tell(expr('Symptom(Me, StuntedFuzzyGrowth) ==> RecommendDisease(RootRot, Me)'))
-kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, VerticilliumWilt) ==> RecommendDisease(VerticilliumWilt, Me)'))
-kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, FusariumWilt) ==> RecommendDisease(FusariumWilt, Me)'))
-kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, DownyMildew) ==> RecommendDisease(DownyMildew, Me)'))
-kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, PowderyMildew) ==> RecommendDisease(PowderyMildew, Me)'))
-kb.tell(expr('Symptom(Me, MustyOdor) ==> RecommendDisease(GrayMold, Me)'))
-kb.tell(expr('Symptom(Me, DarkMushyDecayedRoots) ==> RecommendDisease(RootRot, Me)'))
-kb.tell(expr('Symptom(Me, CircularSpots) ==> RecommendDisease(LeafSpotDiseases, Me)'))
-kb.tell(expr('Symptom(Me, WaterSoakedSpots) ==> RecommendDisease(GrayMold, Me)'))
-kb.tell(expr('Symptom(Me, DarkColoredSap) ==> RecommendDisease(LateBlight, Me)'))
-kb.tell(expr('Symptom(Me, BrownBlackSpots) ==> RecommendDisease(Anthracnose, Me)'))
-kb.tell(expr('Symptom(Me, GreyPurpleFuzz) ==> RecommendDisease(GrayMold, Me)'))
-kb.tell(expr('Symptom(Me, FuzzyWhiteMold) ==> RecommendDisease(PowderyMildew, Me)'))
-kb.tell(expr('Symptom(Me, CurlyLeaves) ==> RecommendDisease(DownyMildew, Me)'))
-kb.tell(expr('Symptom(Me, OnlyOneSideIsAffected) ==> RecommendDisease(VerticilliumWilt, Me)'))
-kb.tell(expr('Symptom(Me, AllThePlantIsAffected) ==> RecommendDisease(VerticilliumWilt, Me)'))
-kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, RootRot) ==> RecommendDisease(RootRot, Me)'))
-kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, VerticilliumWilt) ==> RecommendDisease(VerticilliumWilt, Me)'))
-kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, FusariumWilt) ==> RecommendDisease(FusariumWilt, Me)'))
-kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, LateBlight) ==> RecommendDisease(LateBlight, Me)'))
-kb.tell(expr('Symptom(Me, PinkishSporeMasses) ==> RecommendDisease(DownyMildew, Me)'))
+# ... (other rules here)
 
 def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
@@ -62,7 +40,7 @@ def suggest_disease(user_symptoms):
     
     disease_count = {}
     for disease in likely_diseases:
-        disease_name = str(disease[x])
+        disease_name = str(disease['x'])
         disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
     
     if not disease_count:
@@ -72,7 +50,6 @@ def suggest_disease(user_symptoms):
     # Get the most frequent disease
     suggested_disease = max(disease_count, key=disease_count.get)
     messagebox.showinfo("Result", f"Suggested disease based on symptoms:\n{suggested_disease}")
-
 
 # Interface using tkinter
 def get_symptoms():
