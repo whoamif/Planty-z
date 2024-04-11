@@ -13,6 +13,24 @@ diseases = ["Rust", "LeafSpotDiseases", "GrayMold", "RootRot", "VerticilliumWilt
 for disease in diseases:
     kb.tell(expr(f"Disease({disease})"))
 
+treatments = {
+    "Rust": "Apply fungicides such as chlorothalonil or copper-based fungicides.",
+    "LeafSpotDiseases": "Remove and destroy infected leaves. Apply fungicides as needed.",
+    "GrayMold": "Improve air circulation and reduce humidity. Apply fungicides as needed.",
+    "RootRot": "Improve soil drainage. Remove and destroy infected plants. Apply fungicides as needed.",
+    "VerticilliumWilt": "There are no effective chemical treatments. Remove and destroy infected plants.",
+    "FusariumWilt": "There are no effective chemical treatments. Remove and destroy infected plants.",
+    "DownyMildew": "Apply fungicides such as copper-based fungicides. Improve air circulation.",
+    "PowderyMildew": "Apply sulfur-based fungicides. Improve air circulation.",
+    "Anthracnose": "Remove and destroy infected plant parts. Apply fungicides as needed.",
+    "LateBlight": "Apply copper-based fungicides. Remove and destroy infected plants."
+}
+
+# Add the treatment facts to the knowledge base
+for disease, treatment in treatments.items():
+    print(f"Adding treatment for {disease}: {treatment}")
+    kb.tell(expr(f"Treatment({disease}, '{treatment}')"))    
+
 # Define user attributes in the knowledge base
 kb.tell(expr('Person(Me)'))
 
@@ -57,6 +75,7 @@ kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, LateBlight
 kb.tell(expr('Symptom(Me, PinkishSporeMasses) ==> RecommendDisease(DownyMildew, Me)'))
 
 # Function to suggest disease based on symptoms
+
 def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
         kb.tell(expr(f'Symptom(Me, {symptom})'))
@@ -76,12 +95,11 @@ def suggest_disease(user_symptoms):
     
     for disease_dict in likely_diseases:
         for key, value in disease_dict.items():
-         if key == expr('x'):
-            disease_name = value
-            disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
-            max_count = max(max_count, disease_count[disease_name])
+            if key == expr('x'):
+                disease_name = value.op
+                disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
+                max_count = max(max_count, disease_count[disease_name])
 
-    
     if not disease_count:
         messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
         return
@@ -90,9 +108,13 @@ def suggest_disease(user_symptoms):
     for disease, count in disease_count.items():
         if count == max_count:
             print(f"{disease}: {count}")
+            if disease in treatments:
+                print("Treatment:", treatments[disease])
+            else:
+                print("No specific treatment available.")
     
     suggested_diseases = [disease for disease, count in disease_count.items() if count == max_count]
-    messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{suggested_diseases}")
+    messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{suggested_diseases}\n\nTreatment(s):\n{[treatments[disease] if disease in treatments else 'No specific treatment available' for disease in suggested_diseases]}")
 
 # Interface using tkinter
 def get_symptoms():
