@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import Listbox, Scrollbar
 from aima.utils import *
 from aima.logic import *
 
@@ -54,43 +55,63 @@ kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, FusariumWi
 kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, LateBlight) ==> RecommendDisease(LateBlight, Me)'))
 kb.tell(expr('Symptom(Me, PinkishSporeMasses) ==> RecommendDisease(DownyMildew, Me)'))
 
+# Function to suggest disease based on symptoms
 def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
         kb.tell(expr(f'Symptom(Me, {symptom})'))
     
-    likely_diseases = fol_bc_ask(kb, expr('RecommendDisease(x, Me)'))
+    likely_diseases = list(fol_bc_ask(kb, expr('RecommendDisease(x, Me)')))
     
-    suggested_diseases = [str(disease[x]) for disease in likely_diseases]
-    
-    if not suggested_diseases:
+    if not likely_diseases:
         messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
         return
     
-    messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{', '.join(set(suggested_diseases))}")
+    disease_count = {}
+    for disease_dict in likely_diseases:
+        for key, value in disease_dict.items():
+            if isinstance(value, str):
+                disease_name = value
+                disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
+    
+    if not disease_count:
+        messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
+        return
+    
+    suggested_diseases = ", ".join(disease_count.keys())
+    messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{suggested_diseases}")
+
 
 # Interface using tkinter
 def get_symptoms():
     symptoms_window = tk.Toplevel()
     symptoms_window.title("Enter Symptoms")
     
-    tk.Label(symptoms_window, text="Enter the symptoms separated by commas:").pack(pady=20)
+    tk.Label(symptoms_window, text="Select the symptoms:").pack(pady=10)
     
-    symptoms_entry = tk.Entry(symptoms_window, width=50)
-    symptoms_entry.pack(pady=20)
+    scrollbar = Scrollbar(symptoms_window)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+    
+    listbox = Listbox(symptoms_window, selectmode=tk.MULTIPLE, yscrollcommand=scrollbar.set)
+    for symptom in symptoms:
+        listbox.insert(tk.END, symptom)
+    listbox.pack(pady=10)
+    
+    scrollbar.config(command=listbox.yview)
     
     def on_submit():
-        user_symptoms = [symptom.strip() for symptom in symptoms_entry.get().split(',')]
+        selected_indices = listbox.curselection()
+        user_symptoms = [listbox.get(idx) for idx in selected_indices]
         suggest_disease(user_symptoms)
         symptoms_window.destroy()
     
     submit_button = tk.Button(symptoms_window, text="Submit", command=on_submit)
-    submit_button.pack(pady=20)
+    submit_button.pack(pady=10)
 
 # Main application window
 root = tk.Tk()
 root.title("Plant Disease Diagnosis")
 
-button = tk.Button(root, text="Enter Symptoms", command=get_symptoms)
+button = tk.Button(root, text="Select Symptoms", command=get_symptoms)
 button.pack(pady=20)
 
 root.mainloop()
