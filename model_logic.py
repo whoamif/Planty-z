@@ -1,6 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
-from tkinter import Listbox, Scrollbar
+from tkinter import messagebox, Listbox, Scrollbar
 from aima.utils import *
 from aima.logic import *
 
@@ -23,7 +22,9 @@ symptoms = ["YellowOrangeBrownPustules", "Defoliation", "CircularIrregularlySpot
             "DarkMushyDecayedRoots", "CircularSpots", "WaterSoakedSpots",
             "DarkColoredSap", "BrownBlackSpots", "GreyPurpleFuzz", "FuzzyWhiteMold",
             "CurlyLeaves", "OnlyOneSideIsAffected", "AllThePlantIsAffected",
-            "BrownStricksOnViscularTissue", "PinkishSporeMasses"]
+            "BrownStricksOnViscularTissue", "PinkishSporeMasses",
+            "Wilting", "YellowingOfLeaves", "StuntedGrowth", "RottingOfRoots",
+            "WhitePowderySubstanceOnLeaves", "YellowingOfLowerLeaves"]
 
 # Add the symptom facts to the knowledge base
 for symptom in symptoms:
@@ -60,26 +61,38 @@ def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
         kb.tell(expr(f'Symptom(Me, {symptom})'))
     
+    print("Symptoms added to KB:", user_symptoms)
+    
     likely_diseases = list(fol_bc_ask(kb, expr('RecommendDisease(x, Me)')))
+    
+    print("Likely diseases:", likely_diseases)
     
     if not likely_diseases:
         messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
         return
     
     disease_count = {}
+    max_count = 0
+    
     for disease_dict in likely_diseases:
         for key, value in disease_dict.items():
-            if isinstance(value, str):
-                disease_name = value
-                disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
+         if key == expr('x'):
+            disease_name = value
+            disease_count[disease_name] = disease_count.get(disease_name, 0) + 1
+            max_count = max(max_count, disease_count[disease_name])
+
     
     if not disease_count:
         messagebox.showinfo("Result", "No likely diseases found based on symptoms.")
         return
     
-    suggested_diseases = ", ".join(disease_count.keys())
+    print("Likely diseases and their counts:")
+    for disease, count in disease_count.items():
+        if count == max_count:
+            print(f"{disease}: {count}")
+    
+    suggested_diseases = [disease for disease, count in disease_count.items() if count == max_count]
     messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{suggested_diseases}")
-
 
 # Interface using tkinter
 def get_symptoms():
