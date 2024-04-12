@@ -36,13 +36,13 @@ kb.tell(expr('Person(Me)'))
 
 # Define symptoms
 symptoms = ["YellowOrangeBrownPustules", "Defoliation", "CircularIrregularlySpots",
-            "GrayBrownFuzz", "StuntedFuzzyGrowth", "YellowSpots", "MustyOdor",
+            "GrayBrownFuzz", "StuntedFuzzyGrowth", "YellowSpots","YellowBrownSpots" "MustyOdor",
             "DarkMushyDecayedRoots", "CircularSpots", "WaterSoakedSpots",
             "DarkColoredSap", "BrownBlackSpots", "GreyPurpleFuzz", "FuzzyWhiteMold",
             "CurlyLeaves", "OnlyOneSideIsAffected", "AllThePlantIsAffected",
             "BrownStricksOnViscularTissue", "PinkishSporeMasses",
             "Wilting", "YellowingOfLeaves", "StuntedGrowth", "RottingOfRoots",
-            "WhitePowderySubstanceOnLeaves", "YellowingOfLowerLeaves"]
+            "WhitePowderySubstanceOnLeaves", "YellowingOfLowerLeaves",]
 
 # Add the symptom facts to the knowledge base
 for symptom in symptoms:
@@ -51,8 +51,9 @@ for symptom in symptoms:
 # Define rules based on symptoms and diseases
 kb.tell(expr('Symptom(Me, YellowOrangeBrownPustules) & Symptom(Me, Defoliation) ==> RecommendDisease(Rust, Me)'))
 kb.tell(expr('Symptom(Me, Defoliation) & Symptom(Me, CircularIrregularlySpots) ==> RecommendDisease(LeafSpotDiseases, Me)'))
-kb.tell(expr('Symptom(Me, GrayBrownFuzz) ==> RecommendDisease(GrayMold, Me)'))
-kb.tell(expr('Symptom(Me, StuntedFuzzyGrowth) ==> RecommendDisease(RootRot, Me)'))
+kb.tell(expr('Symptom(Me, GrayBrownFuzz) & (Symptom(Me, WaterSoakedSpots) & Symptom(Me, MustyOdor)) ==> RecommendDisease(GrayMold, Me)'))
+kb.tell(expr('Symptom(Me, StuntedFuzzyGrowth) & Symptom(Me, YellowBrownSpots) & (Symptom(Me, Wilting) & (Symptom(Me, DarkMushyDecayedRoots))) ==> RecommendDisease(RootRot, Me)'))
+
 kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, VerticilliumWilt) ==> RecommendDisease(VerticilliumWilt, Me)'))
 kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, FusariumWilt) ==> RecommendDisease(FusariumWilt, Me)'))
 kb.tell(expr('Symptom(Me, YellowSpots) & Symptom(Me, DownyMildew) ==> RecommendDisease(DownyMildew, Me)'))
