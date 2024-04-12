@@ -51,6 +51,28 @@ diseases = [
     'PowderyMildew'
 ]
 
+treatments = [
+
+'RemoveInfectedParts',
+'ApplyFungicides',
+'ImproveAirCirculation',
+'RemoveDebris',
+'ApplyCopperFungicides',
+'AvoidOverheadWatering',
+'ApplyChlorothalonilFungicides',
+'RotateCrops',
+'PruneAffectedParts',
+'PlantResistantVarieties',
+'AvoidOverWatering',
+'ApplyThiophanate-methylFungicides',
+'SolarizeSoil',
+'ImproveDrainage',
+'RemoveInfectedLeaves',
+]
+
+for treatment in treatments:
+    KB.tell(expr(f'Treatment({treatment})'))
+
 for disease in diseases:
     KB.tell(expr(f'Disease({disease})'))
 
@@ -74,24 +96,56 @@ KB.tell(expr('PlantSymptom(x,YellowSpots) & PlantSymptom(x,Wiltning) & PlantSymp
 KB.tell(expr('PlantSymptom(x,WaterSoakedSpots) & PlantSymptom(x,BrownBlackSpots) & PlantSymptom(x,FuzzyWhiteMold) ==> PlantDisease(x,LateBlight)'))
 KB.tell(expr('PlantSymptom(x,YellowGreenSpots) & PlantSymptom(x,GreyPurpleFuzz) & PlantSymptom(x,CurlyLeaves) & PlantSymptom(x,Defoliation) ==> PlantDisease(x,DownyMildew)'))
 KB.tell(expr('PlantSymptom(x,PowderyFuzzyGrowth) & PlantSymptom(x,YellowBrownLeaves) & PlantSymptom(x,Defoliation) ==> PlantDisease(x,PowderyMildew)'))
+KB.tell(expr('PlantSymptom(x,CircularSpots) & PlantSymptom(x,DarkColoredSap) & PlantSymptom(x,PinkishSporeMasses) ==> PlantDisease(x,Anthracnose)'))
 
 
 KB.tell(expr('PlantSymptom(x, z) & PlantSymptom(x, y) & PlantDisease(x, disease) & Symptom(z) & Symptom(y) ==> Resultat(disease)'))
 
+KB.tell(expr('PlantDisease(x,Rust) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,Rust) ==> PlantTreatment(x,ApplyCopperFungicides)'))
+KB.tell(expr('PlantDisease(x,Rust) ==> PlantTreatment(x,RotateCrops)'))
+
+KB.tell(expr('PlantDisease(x,LeafSpotDiseases) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,LeafSpotDiseases) ==> PlantTreatment(x,ApplyChlorothalonilFungicides)'))
+KB.tell(expr('PlantDisease(x,LeafSpotDiseases) ==> PlantTreatment(x,AvoidOverheadWatering)')) 
+
+KB.tell(expr('PlantDisease(x,GrayMold) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,GrayMold) ==> PlantTreatment(x,ImproveAirCirculation)'))
+KB.tell(expr('PlantDisease(x,GrayMold) ==> PlantTreatment(x,ApplyFungicides)')) 
+
+KB.tell(expr('PlantDisease(x,RootRot) ==> PlantTreatment(x,ImproveDrainage)'))
+KB.tell(expr('PlantDisease(x,RootRot) ==> PlantTreatment(x,AvoidOverWatering)'))
+KB.tell(expr('PlantDisease(x,RootRot) ==> PlantTreatment(x,ApplyFungicides)')) 
+
+KB.tell(expr('PlantDisease(x,VerticilliumWilt) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,VerticilliumWilt) ==> PlantTreatment(x,ApplyThiophanate-methylFungicides)'))
+KB.tell(expr('PlantDisease(x,VerticilliumWilt) ==> PlantTreatment(x,SolarizeSoil)')) 
+
+KB.tell(expr('PlantDisease(x,FusariumWilt) ==> PlantTreatment(x,PlantResistantVarieties)'))
+KB.tell(expr('PlantDisease(x,FusariumWilt) ==> PlantTreatment(x,RotateCrops)'))
+KB.tell(expr('PlantDisease(x,FusariumWilt) ==> PlantTreatment(x,AvoidOverWatering)')) 
+
+KB.tell(expr('PlantDisease(x,LateBlight) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,LateBlight) ==> PlantTreatment(x,ApplyChlorothalonilFungicides)'))
+KB.tell(expr('PlantDisease(x,LateBlight) ==> PlantTreatment(x,RotateCrops)')) 
+
+KB.tell(expr('PlantDisease(x,DownyMildew) ==> PlantTreatment(x,RemoveDebris)'))
+KB.tell(expr('PlantDisease(x,DownyMildew) ==> PlantTreatment(x,ApplyCopperFungicides)'))
+KB.tell(expr('PlantDisease(x,DownyMildew) ==> PlantTreatment(x,AvoidOverheadWatering)')) 
+
+KB.tell(expr('PlantDisease(x,PowderyMildew) ==> PlantTreatment(x,RemoveInfectedParts)'))
+KB.tell(expr('PlantDisease(x,PowderyMildew) ==> PlantTreatment(x,ApplyFungicides)'))
+KB.tell(expr('PlantDisease(x,PowderyMildew) ==> PlantTreatment(x,ImproveAirCirculation)')) 
+
+KB.tell(expr('PlantDisease(x,Anthracnose) ==> PlantTreatment(x,PruneAffectedParts)'))
+KB.tell(expr('PlantDisease(x,Anthracnose) ==> PlantTreatment(x,ApplyCopperFungicides)'))
+KB.tell(expr('PlantDisease(x,Anthracnose) ==> PlantTreatment(x,RemoveDebris)')) 
+
+
+
+
 
 """
-KB.tell(expr('Symptom(x) ==> Disease(y)'))      
-KB.tell(expr('Symptom(YellowOrangeBrownPustules) & Symptom(Defoliation) ==> Disease(Rust)')) 
-KB.tell(expr('Symptom(CircularIrregularlySpots) & Symptom(Defoliation) ==> Disease(LeafSpotDiseases)'))
-KB.tell(expr('Symptom(GrayBrownFuzz) & Symptom(WaterSoakedSpots) & Symptom(MustyOdor) ==> Disease(GrayMold)'))
-KB.tell(expr('Symptom(StuntedFuzzyGrowth) & Symptom(YellowBrownSpots) & Symptom(Wiltning) & Symptom(DarkMushyDecayedRoots) ==> Disease(RootRot)'))
-KB.tell(expr('Symptom(YellowSpots) & Symptom(Wiltning) & Symptom(BrownStricksOnViscularTissue) & Symptom(OnlyOneSideIsAffected) ==> Disease(VerticilliumWilt)'))
-KB.tell(expr('Symptom(YellowSpots) & Symptom(Wiltning) & Symptom(BrownStricksOnViscularTissue) & Symptom(AllThePlantIsAffected) ==> Disease(FusariumWilt)'))
-KB.tell(expr('Symptom(CircularSpots) & Symptom(DarkColoredSap) & Symptom(PinkishSporeMasses) ==> Disease(Anthracnose)'))
-KB.tell(expr('Symptom(WaterSoakedSpots) & Symptom(BrownBlackSpots) & Symptom(FuzzyWhiteMold) ==> Disease(LateBlight)'))
-KB.tell(expr('Symptom(YellowGreenSpots) & Symptom(GreyPurpleFuzz) & Symptom(CurlyLeaves) & Symptom(Defoliation) ==> Disease(DownyMildew)'))
-KB.tell(expr('Symptom(PowderyFuzzyGrowth) & Symptom(YellowBrownLeaves) & Symptom(Defoliation) ==> Disease(PowderyMildew)'))
-
 # so based on the entered symptomes one disease will be matched and printed 
 for disease in diseases:
     query = expr(f'PlantDisease(x,{disease})')
@@ -103,7 +157,12 @@ for disease in diseases:
         
         print(f"The associated disease is : {disease}")
         break
-"""
+
+for treatment in treatments: 
+    tr=KB.ask(expr(f'PlantTreatment(x,{treatment})')) 
+    if tr:
+        print(treatment)"""
+
 
 # Initialize Tkinter
 root = tk.Tk()
@@ -121,14 +180,26 @@ def diagnose():
     query_result = query_kb()
     # Display the result
     label_result.config(text=query_result)
+    show_treatments_button.pack()
 
 def query_kb():
     for disease in diseases:
-        query = expr(f'PlantDisease(user,{disease})')
+        query = expr(f'PlantDisease(x,{disease})')
         solution = KB.ask(query)
         if solution:
             return f"The associated disease is: {disease}"
     return "No matching disease found." 
+
+def show_treatments():
+    treats=[]
+    disease = label_result.cget("text").split(": ")[-1]
+    for treatment in treatments: 
+        tr=KB.ask(expr(f'PlantTreatment(x,{treatment})')) 
+        if tr:
+            treats.append(treatment)
+    
+    treatments_text = "\n".join(treats) 
+    label_treatments.config(text=f"Treatments for {disease}:\n{treatments_text}")
 
 
 # Interface layout
@@ -139,7 +210,7 @@ label_instruction.pack()
 symptom_buttons = []
 for symptom in symptoms:
     button = tk.Button(root, text=symptom, command=lambda s=symptom: add_symptom(s))
-    button.pack()
+    button.pack() 
     symptom_buttons.append(button)
 
 # Label to display selected symptoms
@@ -154,8 +225,15 @@ button_diagnose.pack()
 label_result = tk.Label(root, text="")
 label_result.pack()
 
+show_treatments_button = tk.Button(root, text="Show Treatments", command=show_treatments)
+
+# Label to display treatments
+label_treatments = tk.Label(root, text="")
+label_treatments.pack()
+
 # Start the Tkinter event loop
 root.mainloop()
+
 
 
 
