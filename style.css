@@ -1,0 +1,98 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style header */
+header {
+    background-color: white;
+    color: #1E1E1E;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100vw; /* Set width to 100% of the viewport width */
+    height: 10vh; /* Set height to 10% of the viewport height */
+} 
+
+/* Style logo */
+.logo img {
+    height: 50px;
+}
+
+nav {
+    margin-right: 50px;
+
+}
+/* Style navigation */
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    font-size: 20px ;
+    color: #1E1E1E;
+    text-decoration: none;
+}
+
+/* Style main sections */
+main {
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Symptoms {
+    background-color: #C1DCDC;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%; /* Adjust the width as needed */
+    height: 50%;
+}
+
+.left {
+    flex: 1;
+}
+
+.left h2 {
+    margin-bottom: 10px;
+}
+
+.left input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+
+/* Style the right side */
+.right {
+    flex: 1;
+    text-align: center;
+}
+
+.right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+/* Style footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
