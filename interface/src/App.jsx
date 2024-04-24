@@ -75,9 +75,8 @@ function App() {
             
         </div>
       
-       <div className="flex m-auto  gap-20 bg-[#C1DCDC]	 w-screen h-90 ">
+       <div className="flex m  gap-20 bg-[#C1DCDC]	 w-screen h-1200 ">
        <Symtoms></Symtoms>
-
       </div>
 
 
