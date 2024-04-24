@@ -1,6 +1,7 @@
 import React from "react";
 import header from "./assets/home.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Symtoms from "./Symtoms";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFacebookF,
@@ -71,13 +72,11 @@ function App() {
       </div>
         <div className="flex justify-center mt-12 font-bold text-3xl w-screen ">
             TRY IT NOW
+            
         </div>
       
-       <div className="flex  gap-20 bg-[#C1DCDC]	 w-screen h-90 ">
-        hhhh
-        jjnrofo
-        ]lcfkov
-
+       <div className="flex m-auto  gap-20 bg-[#C1DCDC]	 w-screen h-90 ">
+       <Symtoms></Symtoms>
 
       </div>
 
