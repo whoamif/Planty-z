@@ -54,7 +54,7 @@ function App() {
       </div>
       <div className="flex w-screen m-auto">
         <img
-          className="w-700 ml-40 mt-10 justify-center"
+          className="w-700 ml-30 mt-10 justify-center"
           src={header}
           alt="home"
         />{" "}
