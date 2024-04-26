@@ -1,0 +1,484 @@
+Metadata-Version: 2.1
+Name: aima3
+Version: 1.0.11
+Summary: Artificial Intelligence: A Modern Approach, in Python3
+Home-page: https://github.com/Calysto/aima3
+Author: Douglas Blank
+Author-email: doug.blank@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Framework :: IPython
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: networkx (==1.11)
+Requires-Dist: jupyter
+Requires-Dist: tqdm
+
+.. raw:: html
+
+   <div align="center">
+     <a href="http://aima.cs.berkeley.edu/"><img src="https://raw.githubusercontent.com/aimacode/aima-python/master/images/aima_logo.png"></a><br><br>
+   </div>
+
+``aima-python`` |Build Status| |Binder|
+=======================================
+
+Python code for the book *`Artificial Intelligence: A Modern
+Approach <http://aima.cs.berkeley.edu>`__.* You can use this in
+conjunction with a course on AI, or for study on your own. We're looking
+for `solid
+contributors <https://github.com/aimacode/aima-python/blob/master/CONTRIBUTING.md>`__
+to help.
+
+Structure of the Project
+------------------------
+
+When complete, this project will have Python implementations for all the
+pseudocode algorithms in the book, as well as tests and examples of use.
+For each major topic, such as ``nlp`` (natural language processing), we
+provide the following files:
+
+-  ``nlp.py``: Implementations of all the pseudocode algorithms, and
+   necessary support functions/classes/data.
+-  ``tests/test_nlp.py``: A lightweight test suite, using ``assert``
+   statements, designed for use with
+   ```py.test`` <http://pytest.org/latest/>`__, but also usable on their
+   own.
+-  ``nlp.ipynb``: A Jupyter (IPython) notebook that explains and gives
+   examples of how to use the code.
+-  ``nlp_apps.ipynb``: A Jupyter notebook that gives example
+   applications of the code.
+
+Python 3.4 and up
+-----------------
+
+| This code requires Python 3.4 or later, and does not run in Python 2.
+  You can `install Python <https://www.python.org/downloads>`__ or use a
+  browser-based Python interpreter such as
+  `repl.it <https://repl.it/languages/python3>`__.
+| You can run the code in an IDE, or from the command line with
+  ``python -i filename.py`` where the ``-i`` option puts you in an
+  interactive loop where you can run Python functions. See
+  `jupyter.org <http://jupyter.org/>`__ for instructions on setting up
+  your own Jupyter notebook environment, or run the notebooks online
+  with `try.jupiter.org <https://try.jupyter.org/>`__.
+
+Index of Algorithms
+===================
+
+Here is a table of algorithms, the figure, name of the algorithm in the
+book and in the repository, and the file where they are implemented in
+the repository. This chart was made for the third edition of the book
+and is being updated for the upcoming fourth edition. Empty
+implementations are a good place for contributors to look for an issue.
+The `aima-pseudocode <https://github.com/aimacode/aima-pseudocode>`__
+project describes all the algorithms from the book. An asterisk next to
+the file name denotes the algorithm is not fully implemented. Another
+great place for contributors to start is by adding tests and writing on
+the notebooks. You can see which algorithms have tests and notebook
+sections below. If the algorithm you want to work on is covered, don't
+worry! You can still add more tests and provide some examples of use in
+the notebook!
+
++-------+----------------------+-------------------+--------------------+-----+--------+
+| **Fig | **Name (in 3rd       | **Name (in        | **File**           | **T | **Note |
+| ure** | edition)**           | repository)**     |                    | est | book** |
+|       |                      |                   |                    | s** |        |
++=======+======================+===================+====================+=====+========+
+| 2     | Random-Vacuum-Agent  | ``RandomVacuumAge | ```agents.py`` <.. | Don |        |
+|       |                      | nt``              | /master/agents.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2     | Model-Based-Vacuum-A | ``ModelBasedVacuu | ```agents.py`` <.. | Don |        |
+|       | gent                 | mAgent``          | /master/agents.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.1   | Environment          | ``Environment``   | ```agents.py`` <.. | Don | Includ |
+|       |                      |                   | /master/agents.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.1   | Agent                | ``Agent``         | ```agents.py`` <.. | Don | Includ |
+|       |                      |                   | /master/agents.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.3   | Table-Driven-Vacuum- | ``TableDrivenVacu | ```agents.py`` <.. |     |        |
+|       | Agent                | umAgent``         | /master/agents.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.7   | Table-Driven-Agent   | ``TableDrivenAgen | ```agents.py`` <.. |     |        |
+|       |                      | t``               | /master/agents.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.8   | Reflex-Vacuum-Agent  | ``ReflexVacuumAge | ```agents.py`` <.. | Don |        |
+|       |                      | nt``              | /master/agents.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.10  | Simple-Reflex-Agent  | ``SimpleReflexAge | ```agents.py`` <.. |     |        |
+|       |                      | nt``              | /master/agents.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 2.12  | Model-Based-Reflex-A | ``ReflexAgentWith | ```agents.py`` <.. |     |        |
+|       | gent                 | State``           | /master/agents.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3     | Problem              | ``Problem``       | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3     | Node                 | ``Node``          | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3     | Queue                | ``Queue``         | ```utils.py`` <../ | Don |        |
+|       |                      |                   | master/utils.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.1   | Simple-Problem-Solvi | ``SimpleProblemSo | ```search.py`` <.. |     |        |
+|       | ng-Agent             | lvingAgent``      | /master/search.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.2   | Romania              | ``romania``       | ```search.py`` <.. | Don | Includ |
+|       |                      |                   | /master/search.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.7   | Tree-Search          | ``tree_search``   | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.7   | Graph-Search         | ``graph_search``  | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.11  | Breadth-First-Search | ``breadth_first_s | ```search.py`` <.. | Don | Includ |
+|       |                      | earch``           | /master/search.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.14  | Uniform-Cost-Search  | ``uniform_cost_se | ```search.py`` <.. | Don | Includ |
+|       |                      | arch``            | /master/search.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.17  | Depth-Limited-Search | ``depth_limited_s | ```search.py`` <.. | Don |        |
+|       |                      | earch``           | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.18  | Iterative-Deepening- | ``iterative_deepe | ```search.py`` <.. | Don |        |
+|       | Search               | ning_search``     | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.22  | Best-First-Search    | ``best_first_grap | ```search.py`` <.. | Don |        |
+|       |                      | h_search``        | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.24  | A\*-Search           | ``astar_search``  | ```search.py`` <.. | Don | Includ |
+|       |                      |                   | /master/search.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 3.26  | Recursive-Best-First | ``recursive_best_ | ```search.py`` <.. | Don |        |
+|       | -Search              | first_search``    | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.2   | Hill-Climbing        | ``hill_climbing`` | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.5   | Simulated-Annealing  | ``simulated_annea | ```search.py`` <.. | Don |        |
+|       |                      | ling``            | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.8   | Genetic-Algorithm    | ``genetic_algorit | ```search.py`` <.. | Don | Includ |
+|       |                      | hm``              | /master/search.py> | e   | ed     |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.11  | And-Or-Graph-Search  | ``and_or_graph_se | ```search.py`` <.. | Don |        |
+|       |                      | arch``            | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.21  | Online-DFS-Agent     | ``online_dfs_agen | ```search.py`` <.. |     |        |
+|       |                      | t``               | /master/search.py> |     |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 4.24  | LRTA\*-Agent         | ``LRTAStarAgent`` | ```search.py`` <.. | Don |        |
+|       |                      |                   | /master/search.py> | e   |        |
+|       |                      |                   | `__                |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 5.3   | Minimax-Decision     | ``minimax_decisio | ```games.py`` <../ | Don | Includ |
+|       |                      | n``               | master/games.py>`_ | e   | ed     |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 5.7   | Alpha-Beta-Search    | ``alphabeta_searc | ```games.py`` <../ | Don | Includ |
+|       |                      | h``               | master/games.py>`_ | e   | ed     |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 6     | CSP                  | ``CSP``           | ```csp.py`` <../ma | Don | Includ |
+|       |                      |                   | ster/csp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 6.3   | AC-3                 | ``AC3``           | ```csp.py`` <../ma | Don |        |
+|       |                      |                   | ster/csp.py>`__    | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 6.5   | Backtracking-Search  | ``backtracking_se | ```csp.py`` <../ma | Don | Includ |
+|       |                      | arch``            | ster/csp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 6.8   | Min-Conflicts        | ``min_conflicts`` | ```csp.py`` <../ma | Don |        |
+|       |                      |                   | ster/csp.py>`__    | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 6.11  | Tree-CSP-Solver      | ``tree_csp_solver | ```csp.py`` <../ma | Don | Includ |
+|       |                      | ``                | ster/csp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7     | KB                   | ``KB``            | ```logic.py`` <../ | Don | Includ |
+|       |                      |                   | master/logic.py>`_ | e   | ed     |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.1   | KB-Agent             | ``KB_Agent``      | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.7   | Propositional Logic  | ``Expr``          | ```logic.py`` <../ | Don |        |
+|       | Sentence             |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.10  | TT-Entails           | ``tt_entails``    | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.12  | PL-Resolution        | ``pl_resolution`` | ```logic.py`` <../ | Don | Includ |
+|       |                      |                   | master/logic.py>`_ | e   | ed     |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.14  | Convert to CNF       | ``to_cnf``        | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.15  | PL-FC-Entails?       | ``pl_fc_resolutio | ```logic.py`` <../ | Don |        |
+|       |                      | n``               | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.17  | DPLL-Satisfiable?    | ``dpll_satisfiabl | ```logic.py`` <../ | Don |        |
+|       |                      | e``               | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.18  | WalkSAT              | ``WalkSAT``       | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.20  | Hybrid-Wumpus-Agent  | ``HybridWumpusAge |                    |     |        |
+|       |                      | nt``              |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 7.22  | SATPlan              | ``SAT_plan``      | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 9     | Subst                | ``subst``         | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 9.1   | Unify                | ``unify``         | ```logic.py`` <../ | Don | Includ |
+|       |                      |                   | master/logic.py>`_ | e   | ed     |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 9.3   | FOL-FC-Ask           | ``fol_fc_ask``    | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 9.6   | FOL-BC-Ask           | ``fol_bc_ask``    | ```logic.py`` <../ | Don |        |
+|       |                      |                   | master/logic.py>`_ | e   |        |
+|       |                      |                   | _                  |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 9.8   | Append               |                   |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.1  | Air-Cargo-problem    | ``air_cargo``     | ```planning.py`` < | Don |        |
+|       |                      |                   | ../master/planning | e   |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.2  | Spare-Tire-Problem   | ``spare_tire``    | ```planning.py`` < | Don |        |
+|       |                      |                   | ../master/planning | e   |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.3  | Three-Block-Tower    | ``three_block_tow | ```planning.py`` < | Don |        |
+|       |                      | er``              | ../master/planning | e   |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.7  | Cake-Problem         | ``have_cake_and_e | ```planning.py`` < | Don |        |
+|       |                      | at_cake_too``     | ../master/planning | e   |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.9  | Graphplan            | ``GraphPlan``     | ```planning.py`` < |     |        |
+|       |                      |                   | ../master/planning |     |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 10.13 | Partial-Order-Planne |                   |                    |     |        |
+|       | r                    |                   |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 11.1  | Job-Shop-Problem-Wit | ``job_shop_proble | ```planning.py`` < | Don |        |
+|       | h-Resources          | m``               | ../master/planning | e   |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 11.5  | Hierarchical-Search  | ``hierarchical_se | ```planning.py`` < |     |        |
+|       |                      | arch``            | ../master/planning |     |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 11.8  | Angelic-Search       |                   |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 11.10 | Doubles-tennis       | ``double_tennis_p | ```planning.py`` < |     |        |
+|       |                      | roblem``          | ../master/planning |     |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 13    | Discrete Probability | ``ProbDist``      | ```probability.py` | Don | Includ |
+|       | Distribution         |                   | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 13.1  | DT-Agent             | ``DTAgent``       | ```probability.py` |     |        |
+|       |                      |                   | ` <../master/proba |     |        |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.9  | Enumeration-Ask      | ``enumeration_ask | ```probability.py` | Don | Includ |
+|       |                      | ``                | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.11 | Elimination-Ask      | ``elimination_ask | ```probability.py` | Don | Includ |
+|       |                      | ``                | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.13 | Prior-Sample         | ``prior_sample``  | ```probability.py` |     | Includ |
+|       |                      |                   | ` <../master/proba |     | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.14 | Rejection-Sampling   | ``rejection_sampl | ```probability.py` | Don | Includ |
+|       |                      | ing``             | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.15 | Likelihood-Weighting | ``likelihood_weig | ```probability.py` | Don | Includ |
+|       |                      | hting``           | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 14.16 | Gibbs-Ask            | ``gibbs_ask``     | ```probability.py` | Don | Includ |
+|       |                      |                   | ` <../master/proba | e   | ed     |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 15.4  | Forward-Backward     | ``forward_backwar | ```probability.py` | Don |        |
+|       |                      | d``               | ` <../master/proba | e   |        |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 15.6  | Fixed-Lag-Smoothing  | ``fixed_lag_smoot | ```probability.py` | Don |        |
+|       |                      | hing``            | ` <../master/proba | e   |        |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 15.17 | Particle-Filtering   | ``particle_filter | ```probability.py` | Don |        |
+|       |                      | ing``             | ` <../master/proba | e   |        |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 16.9  | Information-Gatherin |                   |                    |     |        |
+|       | g-Agent              |                   |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 17.4  | Value-Iteration      | ``value_iteration | ```mdp.py`` <../ma | Don | Includ |
+|       |                      | ``                | ster/mdp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 17.7  | Policy-Iteration     | ``policy_iteratio | ```mdp.py`` <../ma | Don |        |
+|       |                      | n``               | ster/mdp.py>`__    | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 17.9  | POMDP-Value-Iteratio |                   |                    |     |        |
+|       | n                    |                   |                    |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 18.5  | Decision-Tree-Learni | ``DecisionTreeLea | ```learning.py`` < | Don | Includ |
+|       | ng                   | rner``            | ../master/learning | e   | ed     |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 18.8  | Cross-Validation     | ``cross_validatio | ```learning.py`` < |     |        |
+|       |                      | n``               | ../master/learning |     |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 18.11 | Decision-List-Learni | ``DecisionListLea | ```learning.py`` < |     |        |
+|       | ng                   | rner``            | ../master/learning |     |        |
+|       |                      |                   | .py>`__\ \*        |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 18.24 | Back-Prop-Learning   | ``BackPropagation | ```learning.py`` < | Don | Includ |
+|       |                      | Learner``         | ../master/learning | e   | ed     |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 18.34 | AdaBoost             | ``AdaBoost``      | ```learning.py`` < |     |        |
+|       |                      |                   | ../master/learning |     |        |
+|       |                      |                   | .py>`__            |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 19.2  | Current-Best-Learnin | ``current_best_le | ```knowledge.py``  | Don | Includ |
+|       | g                    | arning``          | <knowledge.py>`__  | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 19.3  | Version-Space-Learni | ``version_space_l | ```knowledge.py``  | Don | Includ |
+|       | ng                   | earning``         | <knowledge.py>`__  | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 19.8  | Minimal-Consistent-D | ``minimal_consist | ```knowledge.py``  | Don |        |
+|       | et                   | ent_det``         | <knowledge.py>`__  | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 19.12 | FOIL                 | ``FOIL_container` | ```knowledge.py``  | Don |        |
+|       |                      | `                 | <knowledge.py>`__  | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 21.2  | Passive-ADP-Agent    | ``PassiveADPAgent | ```rl.py`` <../mas | Don |        |
+|       |                      | ``                | ter/rl.py>`__      | e   |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 21.4  | Passive-TD-Agent     | ``PassiveTDAgent` | ```rl.py`` <../mas | Don | Includ |
+|       |                      | `                 | ter/rl.py>`__      | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 21.8  | Q-Learning-Agent     | ``QLearningAgent` | ```rl.py`` <../mas | Don | Includ |
+|       |                      | `                 | ter/rl.py>`__      | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 22.1  | HITS                 | ``HITS``          | ```nlp.py`` <../ma | Don | Includ |
+|       |                      |                   | ster/nlp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 23    | Chart-Parse          | ``Chart``         | ```nlp.py`` <../ma | Don | Includ |
+|       |                      |                   | ster/nlp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 23.5  | CYK-Parse            | ``CYK_parse``     | ```nlp.py`` <../ma | Don | Includ |
+|       |                      |                   | ster/nlp.py>`__    | e   | ed     |
++-------+----------------------+-------------------+--------------------+-----+--------+
+| 25.9  | Monte-Carlo-Localiza | ``monte_carlo_loc | ```probability.py` | Don |        |
+|       | tion                 | alization``       | ` <../master/proba | e   |        |
+|       |                      |                   | bility.py>`__      |     |        |
++-------+----------------------+-------------------+--------------------+-----+--------+
+
+Index of data structures
+========================
+
+Here is a table of the implemented data structures, the figure, name of
+the implementation in the repository, and the file where they are
+implemented.
+
++--------------+-------------------------------------+-----------------------------------------------+
+| **Figure**   | **Name (in repository)**            | **File**                                      |
++==============+=====================================+===============================================+
+| 3.2          | romania\_map                        | ```search.py`` <../master/search.py>`__       |
++--------------+-------------------------------------+-----------------------------------------------+
+| 4.9          | vacumm\_world                       | ```search.py`` <../master/search.py>`__       |
++--------------+-------------------------------------+-----------------------------------------------+
+| 4.23         | one\_dim\_state\_space              | ```search.py`` <../master/search.py>`__       |
++--------------+-------------------------------------+-----------------------------------------------+
+| 6.1          | australia\_map                      | ```search.py`` <../master/search.py>`__       |
++--------------+-------------------------------------+-----------------------------------------------+
+| 7.13         | wumpus\_world\_inference            | ```logic.py`` <../master/logic.py>`__         |
++--------------+-------------------------------------+-----------------------------------------------+
+| 7.16         | horn\_clauses\_KB                   | ```logic.py`` <../master/logic.py>`__         |
++--------------+-------------------------------------+-----------------------------------------------+
+| 17.1         | sequential\_decision\_environment   | ```mdp.py`` <../master/mdp.py>`__             |
++--------------+-------------------------------------+-----------------------------------------------+
+| 18.2         | waiting\_decision\_tree             | ```learning.py`` <../master/learning.py>`__   |
++--------------+-------------------------------------+-----------------------------------------------+
+
+Acknowledgements
+================
+
+Many thanks for contributions over the years. I got bug reports,
+corrected code, and other support from Darius Bacon, Phil Ruggera, Peng
+Shao, Amit Patil, Ted Nienstedt, Jim Martin, Ben Catanzariti, and
+others. Now that the project is on GitHub, you can see the
+`contributors <https://github.com/aimacode/aima-python/graphs/contributors>`__
+who are doing a great job of actively improving the project. Many thanks
+to all contributors, especially @darius, @SnShine, @reachtarunhere,
+@MrDupin, and @Chipe1.
+
+.. raw:: html
+
+   <!---Reference Links-->
+
+.. |Build Status| image:: https://travis-ci.org/aimacode/aima-python.svg?branch=master
+   :target: https://travis-ci.org/aimacode/aima-python
+.. |Binder| image:: http://mybinder.org/badge.svg
+   :target: http://mybinder.org/repo/aimacode/aima-python
+
+

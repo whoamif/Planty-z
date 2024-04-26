@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, Listbox, Scrollbar
-from aima.utils import *
 from aima.logic import *
+from aima.utils import * 
 
 kb = FolKB()
 
@@ -75,8 +75,6 @@ kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, FusariumWi
 kb.tell(expr('Symptom(Me, BrownStricksOnViscularTissue) & Symptom(Me, LateBlight) ==> RecommendDisease(LateBlight, Me)'))
 kb.tell(expr('Symptom(Me, PinkishSporeMasses) ==> RecommendDisease(DownyMildew, Me)'))
 
-# Function to suggest disease based on symptoms
-
 def suggest_disease(user_symptoms):
     for symptom in user_symptoms:
         kb.tell(expr(f'Symptom(Me, {symptom})'))
@@ -116,6 +114,9 @@ def suggest_disease(user_symptoms):
     
     suggested_diseases = [disease for disease, count in disease_count.items() if count == max_count]
     messagebox.showinfo("Result", f"Suggested disease(s) based on symptoms:\n{suggested_diseases}\n\nTreatment(s):\n{[treatments[disease] if disease in treatments else 'No specific treatment available' for disease in suggested_diseases]}")
+
+print(suggest_disease(["YellowOrangeBrownPustules","Defoliation"]))
+
 
 # Interface using tkinter
 def get_symptoms():
