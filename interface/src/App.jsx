@@ -1,7 +1,8 @@
 import React from "react";
 import header from "./assets/home.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Symtoms from "./Symtoms";
+import Symptoms from "./Symptoms";
+import { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFacebookF,
@@ -16,6 +17,15 @@ import GallerySlider from "./GallerySlider";
 library.add(faFacebookF, faInstagram, faTwitter);
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleResultClick = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   const images = [
     {
       src: header,
@@ -78,14 +88,29 @@ function App() {
       <br />
        <div className="flex m  gap-20 bg-[#C1DCDC]	 min-w-screen min-h-max ">
         <div className="w-screen flex justify-center h-2/3">
-        <Symtoms></Symtoms>
+        <Symptoms></Symptoms>
         </div>
        
       </div>
       <div className="w-screen flex mt-12 justify-center">
-      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0 hover:bg-red-50 ">See Result</button>
+      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0  hover:bg-red-50 " onClick={handleResultClick}>See Result</button>
       </div>
       
+      {showModal && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="w-96 h-72 bg-blue-300 flex flex-col justify-center items-center relative">
+            <button className="absolute top-2 right-2 text-xs	border-0" onClick={closeModal}>
+              X
+            </button>
+            <div>
+              Disease: Some Disease
+            </div>
+            <div>
+              Treatment: Some Treatment
+            </div>
+          </div>
+        </div>
+      )}
 
 
 
@@ -126,6 +151,7 @@ function App() {
           2024 all Right Reserved Term of use Planty’z
         </div>
       </div>
+      
     </div>
   );
 }

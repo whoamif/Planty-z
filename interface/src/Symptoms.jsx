@@ -1,5 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
 import 'swiper/css';
 import { Navigation} from 'swiper/modules';
 import 'swiper/css/navigation';
@@ -29,7 +30,8 @@ import symptom23 from './assets/symptom23.png';
 import symptom24 from './assets/symptom24.png';
 import symptom25 from './assets/symptom25.png';
 import symptom26 from './assets/symptom26.png';/*}*/}
-
+const Symptoms = () => {
+const [selectedSymptoms, setSelectedSymptoms] = useState([]);
 const symptoms = [
     { name: "YellowOrangeBrownPustules", image: symptom1 },
     { name: "Defoliation", image: symptom2 },
@@ -60,25 +62,37 @@ const symptoms = [
 { name: "YellowingOfLowerLeaves", image: symptom26 }*/} 
     // Ajoutez les autres symptômes avec leurs images correspondantes ici...
 ];
-function Symtoms() {
+const toggleSymptom = (symptom) => {
+    if (selectedSymptoms.includes(symptom)) {
+        setSelectedSymptoms(selectedSymptoms.filter(item => item !== symptom));
+    } else {
+        setSelectedSymptoms([...selectedSymptoms, symptom]);
+    }
+};
+
+
     return (
+        <>
         <Swiper 
             modules={[Navigation]}
-            spaceBetween={50}
+            spaceBetween={10}
             slidesPerView={3}
             navigation
             className='w-5/6 flex m-auto'
         >
             {symptoms.map((symptom, index) => (
                 <SwiperSlide key={index}>
-                    <div className='p-20 flex flex-col gap-4 cursor-pointer'>
-                        <img className='hover:shadow-2xl w-80 h-44' src={symptom.image} alt={symptom.name} />
+                    <div className={`p-20 flex flex-col gap-4 cursor-pointer ${selectedSymptoms.includes(symptom.name) ? 'bg-blue-100' : ''}`} onClick={() => toggleSymptom(symptom.name)}>
+                        <img className='hover:shadow-2xl w-96 h-56' src={symptom.image} alt={symptom.name} />
                         <p className='text-black font-bold'>{symptom.name}</p>
                     </div>
                 </SwiperSlide>
             ))}
+            
         </Swiper>
+        
+    </>
     );
 }
 
-export default Symtoms;
+export default Symptoms;
