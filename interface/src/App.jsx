@@ -37,7 +37,7 @@ function App() {
     },
   ];
   return (
-    <div className="flex flex-col w-screen min-h-screen m-auto ">
+    <div className="flex flex-col w-screen min-h-screen m-auto  ">
       <div className="flex gap-16 font-bold text-lg	h-20 fixed quicksand p-10 shadow-md items-center relative ">
         <a className=" text-black" href="logo">
           Planty'z
@@ -52,16 +52,16 @@ function App() {
           about
         </a>
       </div>
-      <div className="flex w-screen m-auto">
+      <div className="flex w-screen m-auto mb-24">
         <img
-          className="w-700 ml-40 mt-10 justify-center"
+          className="w-500  ml-20 mt-20 justify-center"
           src={header}
           alt="home"
         />{" "}
         {/* Use curly braces and correct variable name */}
       </div>
 
-      <div className="w-screen flex mt-40 gap-40 justify-center mr-4">
+      <div className="w-screen flex m-auto gap-40 justify-center  ">
         <div className="ml-20 mt-20  whitespace-nowrap items-baseline">
           {" "}
           <h1>PLants in algeria</h1>
@@ -74,15 +74,23 @@ function App() {
             TRY IT NOW
             
         </div>
-      
-       <div className="flex m  gap-20 bg-[#C1DCDC]	 w-screen h-1200 ">
-       <Symtoms></Symtoms>
+      <br />
+      <br />
+       <div className="flex m  gap-20 bg-[#C1DCDC]	 min-w-screen min-h-max ">
+        <div className="w-screen flex justify-center h-2/3">
+        <Symtoms></Symtoms>
+        </div>
+       
       </div>
+      <div className="w-full mt-12">
+      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0 hover:bg-red-50">See Result</button>
+      </div>
+      
 
 
 
 
-      <div className=" p-20 justify-center">
+      <div className=" p-20 justify-center m-auto flex flex-col">
        <p className="font-bold "> <h1> Who we are ? </h1> </p> 
         <br />
        <h2>
@@ -92,7 +100,7 @@ function App() {
        </h2>
         
       </div>
-      <div className="flex flex-col gap-20 bg-[#C1DCDC]	 w-screen h-90 pt-20 pl-20 pr-20 pb-5">
+      <div className="flex flex-col gap-20 bg-[#C1DCDC]	 w-screen min-h-full pt-20 pl-20 pr-20 pb-5 m-0">
         <div className="flex justify-between ">
           <div className="flex flex-col gap-2">
             <h1>Planty'z</h1>
