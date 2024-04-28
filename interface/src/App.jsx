@@ -82,8 +82,8 @@ function App() {
         </div>
        
       </div>
-      <div className="w-full mt-12">
-      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0 hover:bg-red-50">See Result</button>
+      <div className="w-screen flex mt-12 justify-center">
+      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0 hover:bg-red-50 ">See Result</button>
       </div>
       
 
