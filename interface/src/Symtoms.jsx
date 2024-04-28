@@ -12,6 +12,7 @@ import plant3 from './assets/img3.png';
 function Symtoms() {
   return (
     <Swiper
+      modules={[Navigation]}
       spaceBetween={50}
       slidesPerView={3}
       navigation
