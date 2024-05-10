@@ -12,15 +12,29 @@ import {
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import GallerySlider from "./GallerySlider";
+import axios from 'axios';
 
-// Add all the imported icons to the library
 library.add(faFacebookF, faInstagram, faTwitter);
 
 function App() {
+  const [dataArray, setDataArray] = useState([]);
+
+  const postData = () => {
+    axios.post('/api/data', { dataArray })
+      .then(response => {
+        console.log('Data posted successfully:', response.data);
+      })
+      .catch(error => {
+        console.error('Error posting data:', error);
+      });
+  };
+  
   const [showModal, setShowModal] = useState(false);
 
   const handleResultClick = () => {
+    postData();
     setShowModal(true);
+
   };
 
   const closeModal = () => {
@@ -93,7 +107,7 @@ function App() {
        
       </div>
       <div className="w-screen flex mt-12 justify-center">
-      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0  hover:bg-red-50 " onClick={handleResultClick}>See Result</button>
+      <button className=" bg-blue-100 w-52 h-16 hover:text-red-500 border-0  hover:bg-red-50 " onClick={handleResultClick} >See Result</button>
       </div>
       
       {showModal && (

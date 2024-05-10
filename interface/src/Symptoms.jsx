@@ -4,6 +4,7 @@ import { useState } from 'react';
 import 'swiper/css';
 import { Navigation} from 'swiper/modules';
 import 'swiper/css/navigation';
+import axios from 'axios';
 import symptom1 from './assets/symptom1.png';
 import symptom2 from './assets/symptom2.png';
 import symptom3 from './assets/symptom3.png';
@@ -31,6 +32,7 @@ import symptom24 from './assets/symptom24.png';
 import symptom25 from './assets/symptom25.png';
 import symptom26 from './assets/symptom26.png';/*}*/}
 const Symptoms = () => {
+    
 const [selectedSymptoms, setSelectedSymptoms] = useState([]);
 const symptoms = [
     { name: "YellowOrangeBrownPustules", image: symptom1 },
