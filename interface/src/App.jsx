@@ -162,7 +162,7 @@ function App() {
         </div>
 
         <div className="flex justify-center">
-          2024 all Right Reserved Term of use Planty’z
+          2024 all Right Reserved Term of use Planty’z , 
         </div>
       </div>
       
