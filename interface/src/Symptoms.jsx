@@ -32,7 +32,17 @@ import symptom24 from './assets/symptom24.png';
 import symptom25 from './assets/symptom25.png';
 import symptom26 from './assets/symptom26.png';/*}*/}
 const Symptoms = () => {
-    
+    const [dataArray, setDataArray] = useState([]);
+
+    const postData = () => {
+      axios.post('/api/suggest_disease', { dataArray })
+        .then(response => {
+          console.log('Data posted successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error posting data:', error);
+        });
+    };
 const [selectedSymptoms, setSelectedSymptoms] = useState([]);
 const symptoms = [
     { name: "YellowOrangeBrownPustules", image: symptom1 },

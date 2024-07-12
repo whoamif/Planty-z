@@ -121,6 +121,8 @@ def suggest_disease(user_symptoms):
 
 # Endpoint to suggest disease based on symptoms
 @app.route('/api/suggest_disease', methods=['POST'])
+
+
 def suggest_disease_endpoint():
     data = request.get_json()
     user_symptoms = data.get('symptoms', [])
