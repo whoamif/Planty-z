@@ -117,7 +117,7 @@ function App() {
 
       {/* Modal to Display Disease Info */}
       {showModal && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 px-5">
           <div className="w-96 h-72 bg-blue-300 flex flex-col justify-center items-center relative">
             <button className="absolute top-2 right-2 text-xs border-0" onClick={closeModal}>
               X
