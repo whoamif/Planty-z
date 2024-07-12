@@ -17,7 +17,7 @@ import symptom10 from "./assets/symptom10.png";
 
 const Symptoms = () => {
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-  const [symptomsData, setSymptomsData] = useState([
+  const symptomsData = [
     { name: "YellowOrangeBrownPustules", image: symptom1 },
     { name: "Defoliation", image: symptom2 },
     { name: "CircularIrregularlySpots", image: symptom3 },
@@ -28,36 +28,39 @@ const Symptoms = () => {
     { name: "MustyOdor", image: symptom8 },
     { name: "DarkMushyDecayedRoots", image: symptom9 },
     { name: "CircularSpots", image: symptom10 },
-    // Add more symptoms as needed
-  ]);
+  ];
 
   const toggleSymptom = (symptomName) => {
-    if (selectedSymptoms.includes(symptomName)) {
-      setSelectedSymptoms(selectedSymptoms.filter(item => item !== symptomName));
-    } else {
-      setSelectedSymptoms([...selectedSymptoms, symptomName]);
-    }
+    console.log("Toggling symptom:", symptomName); // Debug statement
+    setSelectedSymptoms((prevSelected) => 
+      prevSelected.includes(symptomName)
+        ? prevSelected.filter(item => item !== symptomName)
+        : [...prevSelected, symptomName]
+    );
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Submitting symptoms:", selectedSymptoms); // Debug statement
     try {
       const response = await axios.post('http://127.0.0.1:5000/api/suggest_disease', {
         symptoms: selectedSymptoms
       });
       const data = response.data;
+      console.log("Response data:", data); // Debug statement
       // Handle response data as needed
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
   useEffect(() => {
+    console.log("Selected symptoms updated:", selectedSymptoms); // Debug statement
     localStorage.setItem("selectedSymptoms", JSON.stringify(selectedSymptoms));
   }, [selectedSymptoms]);
 
-
   return (
-    <div>
+    <>
       <Swiper
         modules={[Navigation]}
         spaceBetween={10}
@@ -83,11 +86,7 @@ const Symptoms = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    </>
   );
 };
 

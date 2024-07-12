@@ -26,6 +26,7 @@ function App() {
         symptoms: selectedSymptoms,
       });
       const data = response.data;
+      console.log(data)
       setDiseaseInfo(data);
       setShowModal(true);
     } catch (error) {
@@ -122,10 +123,10 @@ function App() {
               X
             </button>
             <div>
-              Disease: {diseaseInfo.diseaseName} {/* Display disease name from response */}
+              Disease: {diseaseInfo.Disease} {/* Display disease name from response */}
             </div>
             <div>
-              Treatment: {diseaseInfo.treatment} {/* Display treatment from response */}
+              Treatment: {diseaseInfo.Treatment} {/* Display treatment from response */}
             </div>
           </div>
         </div>
