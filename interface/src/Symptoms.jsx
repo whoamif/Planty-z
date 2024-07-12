@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
@@ -51,6 +51,10 @@ const Symptoms = () => {
       console.error('Error:', error);
     }
   };
+  useEffect(() => {
+    localStorage.setItem("selectedSymptoms", JSON.stringify(selectedSymptoms));
+  }, [selectedSymptoms]);
+
 
   return (
     <div>
