@@ -1,19 +1,19 @@
 absl-py==2.1.0
 aima==2015.4.5
 aima3==1.0.11
-aiobotocore
-aiofiles 
-aiohttp 
-aioitertools 
-aiosignal
-aiosqlite 
-alabaster 
-anaconda-anon-usage 
-anaconda-catalogs 
-anaconda-client 
-anaconda-cloud-auth 
-anaconda-navigator 
-anaconda-project 
+aiobotocore @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a3od34vmjf/croot/aiobotocore_1682537315667/work
+aiofiles @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_0ar7qj9rcj/croot/aiofiles_1683773588297/work
+aiohttp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_44k_ps5jm7/croot/aiohttp_1694181081849/work
+aioitertools @ file:///tmp/build/80754af9/aioitertools_1607109665762/work
+aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
+aiosqlite @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_13w97vul7u/croot/aiosqlite_1683773912122/work
+alabaster @ file:///home/ktietz/src/ci/alabaster_1611921544520/work
+anaconda-anon-usage @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2c907yrj_5/croot/anaconda-anon-usage_1695305100095/work
+anaconda-catalogs @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_737qok84ed/croot/anaconda-catalogs_1685727302903/work
+anaconda-client @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_62r593g_27/croot/anaconda-client_1694625255058/work
+anaconda-cloud-auth @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_bfydw9p19k/croot/anaconda-cloud-auth_1694462075695/work
+anaconda-navigator @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_606fpkxie9/croot/anaconda-navigator_1695236693174/work
+anaconda-project @ file:///Users/ec2-user/ci_py311/anaconda-project_1678395481364/work
 annotated-types==0.7.0
 anyio==4.4.0
 appdirs==1.4.4
